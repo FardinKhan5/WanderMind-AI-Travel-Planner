@@ -17,7 +17,7 @@ app = FastAPI(title="WanderMind API", version="2.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_origins=["http://localhost:5173", "http://localhost:3000", "https://wandermind.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -31,3 +31,7 @@ app.include_router(trips.router)
 @app.get("/")
 def root():
     return {"message": "WanderMind API v2 is running 🌍"}
+
+if __name__ == "__main__":
+    import uvicorn, os
+    uvicorn.run("main:app", host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
