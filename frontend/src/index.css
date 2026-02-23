@@ -1,0 +1,62 @@
+/* 1. Imports at the top as usual */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap");
+@import "tailwindcss";
+
+/* 2. Setup your theme (colors, fonts, etc.) */
+@theme {
+  --color-cream: #faf7f2;
+  --color-stone: #f0ebe1;
+  --color-terracotta: #c4622d;
+  --color-terracotta-light: #d97b48;
+  --color-terracotta-dark: #a8501f;
+  --color-teal: #2a7a74;
+  --color-teal-light: #3a9e97;
+  --color-ink: #1c1410;
+  --color-ink-light: #4a3828;
+  --color-ink-muted: #8c7b6b;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "DM Sans", sans-serif;
+
+  --shadow-card: 0 4px 32px rgba(28, 20, 16, 0.1);
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+}
+
+/* 3. Global base styles */
+@layer base {
+  body {
+    @apply bg-cream text-ink font-body antialiased;
+  }
+}
+
+/* 4. Define components using @utility (the v4 way) */
+@utility btn-primary {
+  @apply bg-terracotta text-white font-body font-medium px-6 py-3 rounded-xl
+         hover:bg-terracotta-light transition-all duration-200 hover:-translate-y-0.5
+         disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0;
+}
+
+@utility btn-outline {
+  @apply border border-ink/20 text-ink font-body font-medium px-6 py-3 rounded-xl
+         hover:bg-ink hover:text-white transition-all duration-200;
+}
+
+@utility btn-ghost {
+  @apply text-ink/60 font-body font-medium px-4 py-2 rounded-lg
+         hover:text-ink hover:bg-ink/5 transition-all duration-150;
+}
+
+@utility input-field {
+  @apply w-full bg-stone border border-stone rounded-xl px-4 py-3 font-body text-ink
+         placeholder:text-ink/30 focus:outline-none focus:border-terracotta focus:bg-white
+         transition-colors duration-150;
+}
+
+@utility card {
+  @apply bg-white border border-stone rounded-2xl shadow-card;
+}
+
+@utility label {
+  @apply text-xs font-medium uppercase tracking-widest text-ink-muted;
+}
